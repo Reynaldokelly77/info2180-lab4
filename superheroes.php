@@ -89,4 +89,8 @@ echo $message;
 <li><?= $superhero['alias']; ?></li>
 <?php endforeach; ?>
 </ul>
+<<<<<<< HEAD
 <?php endif;?>
+=======
+<?php endif;?>
+>>>>>>> ajax-implementation
