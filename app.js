@@ -1,35 +1,30 @@
-window.addEventListener('load', ()=>{
-
-    let heading = document.querySelector("header h1");
-    heading.style.color = "#fff";
-    heading.style.transition = "all 2s ease-in-out";
-    let parserTool = new DOMParser();
-
-    document.querySelector("button#btn").addEventListener("click", (event)=>{
-        event.preventDefault();
-        let searchVal = document.querySelector("input#searchField").value.replace(/[-&\/\\#,+()$@|~%!.'":;*?<>{}]/g,'');
-        let resultDiv = document.querySelector("div#result");
-      
-        let cleanUrl = `superheroes.php?query= ${searchVal}`.replace( /"[^-0-9+&@#/%?=~_|!:,.;\(\)]"/g,'');
-
-        fetch(cleanUrl, {method : 'GET'})
-        .then(resp => resp.text())
-        .then(elements => {
-            let h3El = document.createElement("h3");
-            let h3Text = document.createTextNode("RESULT");
-            h3El.appendChild(h3Text);
-            let hrEl= document.createElement("hr");
-            resultDiv.innerHTML = '';
-            resultDiv.innerHTML = elements;
-            resultDiv.prepend(h3El, hrEl);
-            
-        })
-
-      
-    });
-
-    document.querySelector("input#searchField").onblur = ()=>{
-        querySelector("input#searchField").style.borderColor = "#FF3232";
+window.onload = function(){
+    var search = document.querySelector("button");
+    var result = document.querySelector(".result");
+    var query = document.querySelector("input");
+    search.addEventListener('click', handleClick);
+    var httpRequest = new XMLHttpRequest();
+    
+    function handleClick(clickEvent){
+    clickEvent.preventDefault();
+    var url = "superheroes.php?query=" + query.value;
+    httpRequest.onreadystatechange = fetchingdata;
+    httpRequest.open('GET', url, true);
+    httpRequest.send();
     }
+    function fetchingdata(){
+    if (httpRequest.readyState === XMLHttpRequest.DONE){
+    if (httpRequest.status === 200){
+    var response = httpRequest.responseText;
+    result.innerHTML = response;
+    }
+    else{
+    result.innerHTML = "Error: This resquest can not be deliver. Please try again.";
+    }
+    }
+    }
+    }
+    
+    
 
-});
+    
