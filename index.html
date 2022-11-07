@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css" />
     <script src="app.js"> </script>
-    <title>Avengers Character Search</title>
+    <title>INFO2180 LAB 4</title>
 </head>
 <body>
     <div class="container">
@@ -13,18 +13,19 @@
         <header>
             <h1>THE AVENGERS SEARCH!</h1>
         </header>
-
         <main>
+        <section class="SearchSuperhero">
             <form>
                 <label><b>Search by Full Name or Alias</b></label>
-                <input id ="searchField" name="search" type="text" placeholder="e.g. Captain America or Steve Rogers" />  
+                <input id ="searchField" name="search" type="text" placeholder="e.g. Captain America or Steve Rogers" />
                 <button name ="searchbtn" id="btn" type ="submit">Search</button>
-                
-            </form>
-            <div id ="result">
             </div>
-        </main>
-
-    </div>
-</body>
+           </form>
+        </section>
+            <section class="ResultDisplay">
+            <h2>RESULT</h2>
+            <hr>
+         <div class="result" id="result"></div>
+        </section>
+      </main>
 </html>
